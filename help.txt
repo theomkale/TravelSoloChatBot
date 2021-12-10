@@ -1,0 +1,30 @@
+Its possible that nltk is not downloaded properly in your sys
+Here are some common issues which I faced
+
+if it says some nltk_data package is not found just comment everything and run below code
+# Downloaded Nltk_data
+# import nltk
+# import ssl
+#
+# try:
+#     _create_unverified_https_context = ssl._create_unverified_context
+# except AttributeError:
+#     pass
+# else:
+#     ssl._create_default_https_context = _create_unverified_https_context
+#
+# nltk.download('popular')
+# print('done')
+
+licence certificate issue
+on mac search for certificates.command and run it
+
+you can train the bot using
+# https://towardsdatascience.com/beginners-guide-to-creating-a-powerful-chatbot-48fc6b073e55
+i found the above article very usefull
+
+
+# Training bot on corpus
+from chatterbot.trainers import ChatterBotCorpusTrainer
+# trainer = ChatterBotCorpusTrainer(bot)
+# trainer.train('chatterbot.corpus.english')
