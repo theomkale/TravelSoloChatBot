@@ -3,7 +3,10 @@ from chatterbot.trainers import ListTrainer
 from flask import Flask, request
 
 # Init
-bot = ChatBot('Buddy', read_only=True, logic_adapters=[
+bot = ChatBot('Om\'s Bot',
+              storage_adapter='chatterbot.storage.SQLStorageAdapter',
+              database_uri='sqlite:///database.sqlite3_eng',
+              read_only=True, logic_adapters=[
     {
         'import_path': 'chatterbot.logic.BestMatch',
         'default_response': 'I am sorry, I do not understand. I am still learning. Please contact my developer Om for further assitance.',
