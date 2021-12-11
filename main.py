@@ -1,5 +1,6 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
+from flask import Flask, request
 
 # Init
 bot = ChatBot('Buddy', read_only=True, logic_adapters=[
@@ -42,5 +43,19 @@ bot = ChatBot('Buddy', read_only=True, logic_adapters=[
 # ])
 
 
-response = bot.get_response('where should i')
-print(response)
+# Flask API
+app = Flask(__name__)
+
+
+@app.route("/get", methods=["GET"])
+def get_bot_response():
+    user_input = request.args.get('msg')
+    print(bot.get_response(user_input))
+    return {
+               "answer": str(bot.get_response(user_input)),
+               "status": "success",
+           }, 200
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
